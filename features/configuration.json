@@ -1,0 +1,103 @@
+{
+    "$schema": "https://raw.githubusercontent.com/liferay/liferay-js-toolkit/master/resources/schemas/configuration.schema.json",
+    "system": {
+        "category": "Liferay Insurance",
+        "name": "Insurance Qoute Calulator For Home",
+        "fields": {
+            "SubmitDataTo": {
+                "type": "string",
+                "name": "Submit Data To",
+                "description": "Select to where data should be submitted.",
+                "required": true,
+                "default": "B",
+                "options": {
+                    "A": "AppBuilder",
+                    "B": "Forms"
+                }
+            },
+            "Labels": {
+                "type": "string",
+                "name": "Labels",
+                "required": false,
+                "description": "Provide a JSON Object To Translate Your Application Labels",
+                "default": ""
+            },
+            "AutoInsuranceFormID": {
+                "type": "string",
+                "name": "FormID",
+                "description": "Auto Insurance Form ID",
+                "default": "44012"
+            },
+            "AppBuilderObjectID": {
+                "type": "string",
+                "name": "ObjectID",
+                "description": "Auto Insurance App Builder Object ID",
+                "default": "44012"
+            },
+            "LicenceHeldFor": {
+                "type": "string",
+                "name": "CustomerType",
+                "description": "Customer Type Field ID",
+                "default": "Field69300162"
+            },
+            "YearManufactured": {
+                "type": "string",
+                "name": "PropertyType",
+                "description": "Property Type Field ID",
+                "default": "Field05110619"
+            },
+            "CarMake": {
+                "type": "string",
+                "name": "Coverage",
+                "description": "Coverage Field ID",
+                "default": "Field90991819"
+            },
+            "FirstName": {
+                "type": "string",
+                "name": "FirstName",
+                "description": "First Name Field ID",
+                "default": "Field34801523"
+            },
+            "LastName": {
+                "type": "string",
+                "name": "LastName",
+                "description": "Last Name Field ID",
+                "default": "Field65957296"
+            },
+            "Email": {
+                "type": "string",
+                "name": "Email",
+                "description": "Email Field ID",
+                "default": "Field33278598"
+            },
+            "Mobile": {
+                "type": "string",
+                "name": "Mobile",
+                "description": "Mobile Field ID",
+                "default": "Field56786927"
+            },
+            "DateOfBirth": {
+                "type": "string",
+                "name": "DateOfBirth",
+                "description": "DateOfBirth Field ID",
+                "default": "Field15570750"
+            },
+            "Nationality": {
+                "type": "string",
+                "name": "Nationality",
+                "description": "Nationality Field ID",
+                "default": "Field46173774"
+            },
+            "ProposedQuotation": {
+                "type": "string",
+                "name": "ProposedQuotation",
+                "description": "Proposed Quotation Field ID",
+                "default": "Field47611439"
+            }
+        }
+    },
+    "portletInstance": {
+        "category": "Liferay Insurance",
+        "name": "Insurance Qoute Calulator For Home"
+    }
+}

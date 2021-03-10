@@ -1,0 +1,163 @@
+<div class="section-top-border" *ngIf="!showThankYouScreen">
+    <h3 class="mb-30" style="text-transform: uppercase;">{{AppLabels["Title"]}}</h3>
+    <form [formGroup]="QuoteForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div id="HomeQuotationSlider" class="carousel slide" data-ride="false" data-wrap="false" data-interval="99999">
+                <div class="carousel-inner" style="min-height: 25rem!important;">
+                    <div class="carousel-item active">
+                        <div class="mt-3">
+                            <label class="section_title">{{AppLabels["Page_1_Title"]}}</label>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="mt-3 form-group">
+                                    <label>{{AppLabels["CustomerType"]}}</label>
+                                    <select formControlName="CustomerType" name="CustomerType" placeholder="" class="form-control">
+                                        <option value="" selected="selected">{{AppLabels["Selected"]}}</option>
+                                        <option value="Landlord" >{{AppLabels["Landlord"]}}</option>
+                                        <option value="Tenant" >{{AppLabels["Tenant"]}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="mt-3 form-group">
+                                    <label>{{AppLabels["PropertyType"]}}</label>
+                                    <select formControlName="PropertyType" name="PropertyType" placeholder="" class="form-control">
+                                        <option value="" selected="selected">{{AppLabels["Selected"]}}</option>
+                                        <option value="Apartment" >{{AppLabels["Apartment"]}}</option>
+                                        <option value="Villa" >{{AppLabels["Villa"]}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="mt-3 form-group">
+                                    <label>{{AppLabels["Coverage"]}}</label>
+                                    <select formControlName="Coverage" name="Coverage" placeholder="" class="form-control">
+                                        <option value="" selected="selected">{{AppLabels["Selected"]}}</option>
+                                        <option value="Contents" >{{AppLabels["Contents"]}}</option>
+                                        <option value="Building" >{{AppLabels["Building"]}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="mt-3 form-group">
+                                    <label>{{AppLabels["PropertyValue"]}}</label>
+                                    <input type="number" formControlName="PropertyValue" name="PropertyValue" placeholder="Property Value" class="single-input" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="mt-3">
+                            <label class="section_title">{{AppLabels["Page_2_Title"]}}</label>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="mt-3 form-group">
+                                    <label>{{AppLabels["FirstName"]}}</label>
+                                    <input type="text" formControlName="FirstName" name="FirstName" placeholder="First Name" class="single-input" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="mt-3 form-group">
+                                    <label>{{AppLabels["LastName"]}}</label>
+                                    <input type="text" formControlName="LastName" name="LastName" placeholder="Last Name" class="single-input" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="mt-3 form-group">
+                                    <label>{{AppLabels["Email"]}}</label>
+                                    <input type="email" formControlName="Email" name="Email" placeholder="Email" class="single-input" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="mt-3 form-group">
+                                    <label>{{AppLabels["Mobile"]}}</label>
+                                    <input type="phone" formControlName="Mobile" name="Mobile" placeholder="Mobile" class="single-input" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="mt-3 form-group">
+                                    <label>{{AppLabels["DateOfBirth"]}}</label>
+                                    <input type="date" formControlName="DateOfBirth" name="DateOfBirth" placeholder="Date Of Birth" class="single-input" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <div class="mt-3 form-group">
+                                    <label>{{AppLabels["Nationality"]}}</label>
+                                    <select formControlName="Nationality" name="Nationality" placeholder="Nationality" class="form-control">
+                                        <option value="" selected="selected">{{AppLabels["Selected"]}}</option>
+                                        <option value="{{country.alpha3Code}}" *ngFor="let country of Countries">{{country.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 d-flex justify-content-center">
+                <div class="btn-group" role="group">
+                    <button type="button" (click)="back()" class="btn btn-dark text-white ">{{AppLabels["Back"]}}</button>
+                    <!--[disabled]="!this.QuoteForm.valid" -->
+                    <button [disabled]="!QuoteForm.valid" type="submit" class="btn btn-info text-white mx-1">{{AppLabels["Submit"]}}
+                    </button>
+                    <button type="button" (click)="next()" class="btn btn-dark text-white ">{{AppLabels["Next"]}}</button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="(QuoteForm.controls.CustomerType.dirty || QuoteForm.controls.CustomerType.touched) && !QuoteForm.valid">
+            <label class="section_title py-4">The following fields are required</label>
+            <ul class="row errors">
+                <!-- Step 1 -->
+                <li class="col-lg-6 col-md-6 col-sm-6  text-danger" *ngIf="(QuoteForm.controls.CustomerType.dirty || QuoteForm.controls.CustomerType.touched) && QuoteForm.controls.CustomerType.errors?.required">
+                    {{AppLabels["CustomerType"]}}
+                </li>
+                <li class="col-lg-6 col-md-6 col-sm-6 text-danger" *ngIf="(QuoteForm.controls.PropertyType.dirty || QuoteForm.controls.PropertyType.touched) && QuoteForm.controls.PropertyType.errors?.required">
+                    {{AppLabels["PropertyType"]}}
+                </li>
+                <li class="col-lg-6 col-md-6 col-sm-6 text-danger" *ngIf="(QuoteForm.controls.Coverage.dirty || QuoteForm.controls.Coverage.touched) && QuoteForm.controls.Coverage.errors?.required">
+                    {{AppLabels["Coverage"]}}
+                </li>
+
+                <!-- End Step 1 Validation-->
+
+                <!-- Step 2 -->
+                <li class="col-lg-6 col-md-6 col-sm-6 text-danger" *ngIf="QuoteForm.controls.FirstName.errors?.required && (QuoteForm.controls.FirstName.dirty || QuoteForm.controls.FirstName.touched)">
+                    {{AppLabels["FirstName"]}}
+                </li>
+                <li class="col-lg-6 col-md-6 col-sm-6 text-danger" *ngIf="QuoteForm.controls.LastName.errors?.required && (QuoteForm.controls.LastName.dirty || QuoteForm.controls.LastName.touched)">
+                    {{AppLabels["LastName"]}}
+                </li>
+                <li class="col-lg-6 col-md-6 col-sm-6 text-danger" *ngIf="QuoteForm.controls.Email.errors?.required && (QuoteForm.controls.Email.dirty || QuoteForm.controls.Email.touched)">
+                    {{AppLabels["Email"]}}
+                </li>
+                <li class="col-lg-6 col-md-6 col-sm-6 text-danger" *ngIf="QuoteForm.controls.Mobile.errors?.required && (QuoteForm.controls.Mobile.dirty || QuoteForm.controls.Mobile.touched)">
+                    {{AppLabels["Mobile"]}}
+                </li>
+                <li class="col-lg-6 col-md-6 col-sm-6 text-danger" *ngIf="QuoteForm.controls.DateOfBirth.errors?.required && (QuoteForm.controls.DateOfBirth.dirty || QuoteForm.controls.DateOfBirth.touched)">
+                    {{AppLabels["DateOfBirth"]}}
+                </li>
+                <li class="col-lg-6 col-md-6 col-sm-6 text-danger" *ngIf="QuoteForm.controls.Nationality.errors?.required && (QuoteForm.controls.Nationality.dirty || QuoteForm.controls.Nationality.touched)">
+                    {{AppLabels["Nationality"]}}
+                </li>
+                <!-- End Step 2 Validation-->
+
+
+            </ul>
+        </div>
+
+    </form>
+</div>
+<div class="section-top-border" *ngIf="showThankYouScreen">
+    <label class="mb-30 section_title" style="text-transform: uppercase;">
+        {{AppLabels["Page_ThankYou_Title"]}}
+    </label>
+    <h3>{{AppLabels["Quotation"]}} {{Quotation}} {{AppLabels["Currency"]}}</h3>
+    <p>
+        {{AppLabels["Page_ThankYou_Body"]}}
+    </p>
+</div>
